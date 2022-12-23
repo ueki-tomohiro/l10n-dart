@@ -1,4 +1,7 @@
 module.exports = {
+  root: true,
+  files: ["./src/**/*.ts", "./src/**/*.js"],
+  ignores: ["./*.config.js"],
   parser: "@typescript-eslint/parser",
   env: {
     browser: true,
