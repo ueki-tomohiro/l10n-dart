@@ -30,6 +30,10 @@
     "url": "https://github.com/ueki-tomohiro/l10n-dart/issues"
   },
   "homepage": "https://github.com/ueki-tomohiro/l10n-dart#readme",
+  "dependencies": {
+    "node-fetch": "^2",
+    "@types/node-fetch": "^2"
+  },
   "devDependencies": {
     "@types/jest": "29.2.4",
     "@typescript-eslint/eslint-plugin": "5.46.0",
