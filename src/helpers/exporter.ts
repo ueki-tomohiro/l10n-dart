@@ -1,6 +1,6 @@
 import fs from "fs";
 
-const checkInputParameter = (text: String) => {
+const parseInputParameter = (text: String) => {
     const matches = text.match(/\{\w+\}/g);
     if (!matches || matches.length === 0) return undefined;
     const params = matches
@@ -23,16 +23,16 @@ const checkInputParameter = (text: String) => {
 export const createLocalizeFile = async (localizePath: string, values : string[][],  locale: string) => 
 {
   const labels = values.pop();
-  const localColumn = labels?.findIndex(l => l == locale);
-  if (!localColumn) return;
+  if (!labels) return;
+  const localColumn = labels.findIndex(l => l == locale) - 2;
 
   const lines = values
     .map((line: string[]) => {
       const [key,description, ...params] = line;
       var value: any = {};
-      const word =  params[localColumn - 2];
+      const word =  params[localColumn];
       value[key] = word;
-      const placeholders = checkInputParameter(word);
+      const placeholders = parseInputParameter(word);
       value[`@${key}`] = {
         description,
         placeholders,
@@ -46,4 +46,3 @@ export const createLocalizeFile = async (localizePath: string, values : string[]
   const ja = { "@@locale": locale, ...lines };
   fs.writeFileSync(`${localizePath}app_${locale}.arb`, JSON.stringify(ja));
 };
-
