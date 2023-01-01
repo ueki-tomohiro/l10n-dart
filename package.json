@@ -31,8 +31,9 @@
   },
   "homepage": "https://github.com/ueki-tomohiro/l10n-dart#readme",
   "dependencies": {
-    "node-fetch": "^2",
-    "@types/node-fetch": "^2"
+    "@types/node-fetch": "^2",
+    "googleapis": "^110.0.0",
+    "node-fetch": "^2"
   },
   "devDependencies": {
     "@types/jest": "29.2.4",
