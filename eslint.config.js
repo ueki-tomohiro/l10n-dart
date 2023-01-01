@@ -11,7 +11,6 @@ module.exports = {
   extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   plugins: ["simple-import-sort", "promise"],
   rules: {
-    "simple-import-sort/imports": "error",
     "no-use-before-define": "off",
     "import/no-anonymous-default-export": "error",
     "@typescript-eslint/no-use-before-define": "error",
