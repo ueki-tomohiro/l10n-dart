@@ -2,8 +2,9 @@ import fs from "fs";
 import { parse } from "csv-parse";
 import { google } from "googleapis";
 import isArray from "lodash/isArray";
-import { Config, OAuth2Credential } from "./type";
+import { Config } from "./type";
 import fetch from "node-fetch";
+import { JWT, OAuth2ClientOptions } from "google-auth-library";
 
 type ImportCSV = (filePath: string) => Promise<string[][]>;
 const importCSV: ImportCSV = async (filePath) => {
@@ -33,9 +34,22 @@ const importGoogleSpreadSheetWithAPIKey: ImportGoogleSpreadSheetWithAPIKey = asy
   return document.values;
 };
 
-type ImportGoogleSpreadSheetWithOAuth2 = (url: string, oauth2?: OAuth2Credential) => Promise<string[][]>;
+type ImportGoogleSpreadSheetWithJWT = (url: string, option?: JWT) => Promise<string[][]>;
 
-const importGoogleSpreadSheetWithOAuth2: ImportGoogleSpreadSheetWithOAuth2 = async (url, oauth2) => {
+const importGoogleSpreadSheetWithJWT: ImportGoogleSpreadSheetWithJWT = async (url, option) => {
+  return [];
+};
+
+type ImportGoogleSpreadSheetWithOAuth2 = (url: string, option?: OAuth2ClientOptions) => Promise<string[][]>;
+
+const importGoogleSpreadSheetWithOAuth2: ImportGoogleSpreadSheetWithOAuth2 = async (url, option) => {
+  const client = new google.auth.OAuth2(option);
+
+  const authUrl = client.generateAuthUrl({
+    access_type: "offline",
+    scope: "https://www.googleapis.com/auth/spreadsheets",
+  });
+
   return [];
 };
 
@@ -51,7 +65,8 @@ export const importValues: ImportValues = async (config: Config) => {
           return importGoogleSpreadSheetWithAPIKey(config.path, config.apiKey);
         case "oauth2":
           return importGoogleSpreadSheetWithOAuth2(config.path, config.oauth2);
-        case "cli":
+        case "jwt":
+          return importGoogleSpreadSheetWithJWT(config.path, config.jwt);
         case "none":
           return importGoogleSpreadSheet(config.path);
       }

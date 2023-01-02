@@ -34,6 +34,7 @@
     "@types/lodash": "^4",
     "@types/node-fetch": "^2",
     "csv-parse": "^5.3.3",
+    "google-auth-library": "^8.7.0",
     "googleapis": "^110",
     "lodash": "^4",
     "node-fetch": "^2"
