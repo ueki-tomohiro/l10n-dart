@@ -5,8 +5,9 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   env: {
     browser: true,
-    jasmine: true,
+    node: true,
     jest: true,
+    es6: true,
   },
   extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   plugins: ["simple-import-sort", "promise"],
@@ -39,4 +40,7 @@ module.exports = {
       },
     },
   ],
+  parserOptions: {
+    ecmaVersion: "latest",
+  },
 };
