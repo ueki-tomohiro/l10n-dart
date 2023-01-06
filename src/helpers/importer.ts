@@ -49,7 +49,9 @@ const importGoogleSpreadSheetWithOAuth2: ImportGoogleSpreadSheetWithOAuth2 = asy
     access_type: "offline",
     scope: "https://www.googleapis.com/auth/spreadsheets",
   });
-
+  // https://gist.github.com/awa2/cc7fb9d38d3f31afecf649cb32858b3a
+  // https://qiita.com/vicugna-pacos/items/f7bb0d97bbaa1371edc8
+  // https://developers.google.com/sheets/api/quickstart/nodejs
   return [];
 };
 

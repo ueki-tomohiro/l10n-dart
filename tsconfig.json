@@ -17,6 +17,7 @@
     "useUnknownInCatchVariables": false,
     "noEmit": true,
     "declaration": true,
+    "declarationMap": true,
     "outDir": "./lib",
   },
   "include": ["src"],

@@ -24,6 +24,9 @@
     "l10n",
     "dart"
   ],
+  "bin": {
+    "l10n-dart": "./cli.js"
+  },
   "author": "Tomohiro Ueki",
   "license": "MIT",
   "bugs": {
@@ -33,11 +36,13 @@
   "dependencies": {
     "@types/lodash": "^4",
     "@types/node-fetch": "^2",
+    "@types/yargs": "^17.0.19",
     "csv-parse": "^5.3.3",
     "google-auth-library": "^8.7.0",
     "googleapis": "^110",
     "lodash": "^4",
-    "node-fetch": "^2"
+    "node-fetch": "^2",
+    "yargs": "^17.6.2"
   },
   "devDependencies": {
     "@types/jest": "^29",
